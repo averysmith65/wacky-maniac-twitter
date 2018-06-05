@@ -3,6 +3,7 @@ FactoryBot.define do
   	email {FFaker::Internet.email}
   	name {FFaker::NameMX.full_name}
   	password 'password'
+    password_confirmation 'password'
   	location {FFaker::Address.city}
   	bio {FFaker::Lorem.sentences}
   	username {FFaker::NameMX.name}
