@@ -18,6 +18,13 @@ RSpec.describe User, type: :model do
 		expect(user).not_to be_valid
 	end
 
+	it 'is invalid without a unique username' do
+		user.save
+		other_user = build(:user, email: user.email)
+		other_user.valid?
+		expect(other_user.errors[:email]).to include('has already been taken')
+	end
+
 	it 'is invalid without an email' do
   	user.email = nil
   	#user = User.new(email: nil, password: 'xnsaadlahdh98lkjad', name: 'Mojo Jojo', username: 'mojojojo', bio: 'crazy evil genius monkey', location: 'Townsville')
