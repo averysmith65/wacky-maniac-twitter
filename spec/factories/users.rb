@@ -8,11 +8,12 @@ FactoryBot.define do
   	bio {FFaker::Lorem.sentences}
   	username {FFaker::NameMX.name}
 
-  	after(:build) do |user|
-  		[:goodmorning, :goodevening].each do |tweet|
-  			user.tweets << FactoryBot.build(:goodevening, user: user)
-  		end	
-  	end
-    
+    factory :user_with_tweets do
+    	after(:build) do |user|
+    		[:goodmorning, :goodevening].each do |tweet|
+    			user.tweets << FactoryBot.build(:goodevening, user: user)
+    		end	
+    	end
+    end
   end
 end

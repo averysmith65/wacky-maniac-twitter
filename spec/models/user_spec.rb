@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
 	let(:user) { build(:user) }
+	let(:user_with_tweets) { build(:user_with_tweets) }
 
 	it 'has a valid factory' do
 		expect(build(:user)).to be_valid
@@ -38,7 +39,7 @@ RSpec.describe User, type: :model do
 	end
 
 	it 'has two tweets' do
-		expect(user.tweets.length).to eq(2)
+		expect(user_with_tweets.tweets.length).to eq(2)
 	end
 
 	it 'belongs to User' do
