@@ -122,7 +122,24 @@ RSpec.describe TweetsController, type: :controller do
         patch :update, params: { id: tweet.to_param, tweet: invalid_attributes }
         expect(response).to render_template(:edit)
       end
-
     end
+  end
+
+  describe "DELETE #destroy" do
+    let (:tweet) { build(:goodmorning) }
+
+    it "destroys the requested tweet" do
+      tweet.save
+      expect{
+        delete :destroy, params: {id: tweet.to_param}
+      }.to change(Tweet, :count).by(-1)
+    end
+
+    it "redirects to the tasks list" do
+      tweet.save
+      delete :destroy, params: {id: tweet.to_param}
+      expect(response).to redirect_to(tweets_path)
+    end
+
   end
 end
