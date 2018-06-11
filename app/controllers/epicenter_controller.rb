@@ -1,6 +1,5 @@
 class EpicenterController < ApplicationController
   def feed
-  	if @current_user
 	    @following_tweets = []
 
 	    Tweet.all.each do |tweet|
@@ -8,7 +7,6 @@ class EpicenterController < ApplicationController
 	        @following_tweets.push(tweet)
 	      end
 	    end
-	   end
 	end
 
   def show_user
