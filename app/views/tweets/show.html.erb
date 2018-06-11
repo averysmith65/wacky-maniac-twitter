@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p> Message: <%= @tweet.message %> </p>
+<p> Message: <%= @tweet.message.html_safe %> </p>
 
 <p> User:@<%= @tweet.user.username %> </p>
 
