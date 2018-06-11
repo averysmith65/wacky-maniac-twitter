@@ -12,7 +12,8 @@ class EpicenterController < ApplicationController
 	end
 
   def show_user
-  end
+	  @user = User.find(params[:id])
+	end
 
   def now_following
   end
